@@ -6,9 +6,16 @@
 #pragma once
 
 #include <iostream>
-
+#include <vector>
+#include <cmath>
 #include "expression.h"
 
 class Logarithm : public Expression {
-    // ADD CODE
+   
+public:
+	Logarithm();
+
+protected:
+
+
 };

@@ -37,3 +37,5 @@ std::ostream& operator<<(std::ostream& d, const Expression& E) {
 	E.display(d);  // dynamic binding occurs
 	return d;
 }
+
+double Expression::operator()(double x) const {};
