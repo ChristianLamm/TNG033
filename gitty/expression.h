@@ -21,7 +21,7 @@ public:
 
     double Epsilon = 1.0e-5;
 
-    virtual double operator()(double x) const; 
+    virtual double operator()(double x) const = 0; 
     virtual Expression* clone() const = 0;
     // Return number of existing instances of class Expression
     // Used only for debug purposes

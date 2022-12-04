@@ -38,4 +38,3 @@ std::ostream& operator<<(std::ostream& d, const Expression& E) {
 	return d;
 }
 
-double Expression::operator()(double x) const {};

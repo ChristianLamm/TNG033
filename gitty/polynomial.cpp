@@ -5,7 +5,9 @@
 
 #include "polynomial.h"
 #include <vector>
-
+#include <cmath>
+#include <iomanip>
+#include "expression.h"
 
 
 // ADD implementation of the member functions for class Polynomial
@@ -19,24 +21,73 @@ Polynomial::Polynomial( double d) {
 
 }
 
-Polynomial::Polynomial(Polynomial& arg) {
 
-	coeff = arg.coeff;
-	
+void Polynomial::display(std::ostream& os) const{
+
+	for (std::size_t i = 0; i < coeff.size(); i++)
+	{
+		if (i == 0) {
+			os << std::fixed << std::setprecision(2) << coeff[i];
+		}
+		else if (coeff[i] < 0)
+		{
+			os << std::fixed << std::setprecision(2) << 
+				" - " << abs(coeff[i]) << " * X^" << i;
+		}
+		else {
+			os << std::fixed << std::setprecision(2) << " + " << abs(coeff[i]) << " * X^" << i;
+		}
+	}
+
 }
 
-void Polynomial::display(std::ostream&) const{}
+Polynomial* Polynomial::clone() const
+{
+	return new Polynomial(*this);
+}
+
+
 double Polynomial::operator()(double x) const {
-	return 0;
+	
+	double sum{ 0 };
+
+	for (std::size_t i = 0; i < coeff.size(); i++) {
+
+		if (i == 0)
+		{
+			sum += coeff[i];
+		}
+		else sum += coeff[i] * (pow(x, i));
+	}
+	
+	return sum;
 }
-Expression* Polynomial::clone() const{}
+
+//Polynomial* Polynomial::clone() const {
+//	return new Polynomial(*this);
+//}
 
 Polynomial Polynomial::operator+=(const Polynomial& arg) {
+
+	for (std::size_t i = 0; i < arg.coeff.size(); i++)
+	{
+		if (i >= coeff.size()) {
+			coeff.push_back(arg.coeff[i]);
+		}
+		else coeff[i] += arg.coeff[i];
+	}
 
 	return *this;
 }
 
-double Polynomial::operator()(double d) const {}
-double& Polynomial::operator[](int arg){}
-double Polynomial::operator[](int arg) const{}
+
+double& Polynomial::operator[](int arg){
+
+	return coeff[arg];
+}
+
+double Polynomial::operator[](int arg) const{
+
+	return coeff[arg];
+}
 
