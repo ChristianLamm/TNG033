@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-
+constexpr double Epsilon = 1.0e-5;
 
 class Expression {
 public:

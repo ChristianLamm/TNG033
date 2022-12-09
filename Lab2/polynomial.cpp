@@ -47,7 +47,7 @@ Polynomial* Polynomial::clone() const
 }
 
 
-double Polynomial::operator()(double x) const {
+double Polynomial::operator()(double x) const {			//p1()(2.0)
 	
 	double sum{0};
 
@@ -66,6 +66,9 @@ double Polynomial::operator()(double x) const {
 //	return new Polynomial(*this);
 //}
 
+// p1 = 1 + x
+// p2 = 2 + x + 3x^2
+// p1 += p2 <=> p1 = p1 + p2 = 3 + 2x + 3x^2
 Polynomial Polynomial::operator+=(const Polynomial& arg) {
 
 	for (std::size_t i = 0; i < arg.coeff.size(); i++)

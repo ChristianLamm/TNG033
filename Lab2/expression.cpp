@@ -26,7 +26,7 @@ std::size_t Expression::get_count_expressions() {
 
 bool Expression::isRoot(double x) const {
 
-	constexpr double Epsilon = 1.0e-5;
+	
 	if (std::abs(this->operator()(x)) < Epsilon) {
 		return true;
 	}
